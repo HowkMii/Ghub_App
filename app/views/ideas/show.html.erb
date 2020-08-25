@@ -1,0 +1,6 @@
+<h2> <%= @idea.title %> </h2>
+<h5><%=  @idea.Owner%></h5>
+<p> <%= @idea.content %> </p>
+<%= link_to "Back", root_path %>
+<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-custom" %>
+<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>

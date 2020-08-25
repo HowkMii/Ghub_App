@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container">
+
+
+    <a class="navbar-brand hide-text" href="#"><%= link_to "GHub",root_path, class:"navbar-brand hide-text" %></a>
+  
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0 ml-md-auto">
+        <input class="form-control mr-sm-2 text-center common-btn " type="search" placeholder="Search" aria-label="Search">
+
+      </form>
+      <ul class="navbar-nav  ml-md-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">notificatin</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "profile", user_path(current_user), class: "nav-link"  %>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

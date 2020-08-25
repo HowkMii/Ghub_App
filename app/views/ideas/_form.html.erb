@@ -1,0 +1,6 @@
+<%= simple_form_for @idea, :html => { :multipart => true } do |f| %>
+	<%= f.input :title, label: "Idea Title" %>
+	<%= f.input :content %>
+	<%= f.input :Owner %>
+	<%= f.button :submit, :class => 'btn-custom2' %>
+<% end %>
