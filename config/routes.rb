@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :ideas
+  resources :ideas do
+    resources :discusses
+  end
 
   root 'ideas#index'
 

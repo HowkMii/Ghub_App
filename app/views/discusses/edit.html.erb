@@ -1,0 +1,13 @@
+<div class="col-md-6 col-md-offset-3">
+
+	<div class="edit-discuss-form">
+
+		<h1>Edit Discuss</h1>
+
+		<%= simple_form_for([@idea, @discuss]) do |f| %>
+
+			<%= f.input :comment %>
+			<%= f.button :submit, :class => "btn-custom2" %>
+		<% end %>
+
+	</div>

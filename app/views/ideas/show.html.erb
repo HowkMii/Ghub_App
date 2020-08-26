@@ -1,6 +1,84 @@
-<h2> <%= @idea.title %> </h2>
-<h5><%=  @idea.Owner%></h5>
-<p> <%= @idea.content %> </p>
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-custom" %>
-<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+<div class="row">
+
+	<div class="col-md-4">
+
+		<%= image_tag @idea.idea_img.url(:idea_show), class: "idea-show" %>
+
+	</div>
+
+	<div class="col-md-8">
+
+		<div class="idea-info">
+
+			<h2 class="idea-title"><%= @idea.title %></h2>
+
+			<h2 class="avg-rating">Average Rating</h2>
+			<div class="average-discuss-rating" data-score=<%= @average_discuss %>></div>
+			<span class="number-of-discusses">Based on <%= @idea.discusses.count %> discuisses</span>
+			<p class="idea-content"><%= @idea.content %></p>
+			<h3 class="idea-ow"><span>From</span> <%= @idea.Owner %></h3>
+
+		</div>
+	</div>
+
+
+</div>
+
+<div class="row">
+
+	<div class="col-md-4">
+
+		<div class="discusses">
+
+			<!-- Where the reviews/ratings will go -->
+			<h1>Discusses</h1>
+			<%= render @idea.discusses %>
+
+			<div>
+				<%= link_to "Add Discuss", new_idea_discuss_path(@idea), class: "btn-custom2" %>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="links btn-group">
+
+	<%= link_to "Back", root_path, class: "btn btn-custom2" %>
+
+	<% if user_signed_in? %>
+
+		<% if @idea.user_id == current_user.id %>
+
+			<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-custom2" %>
+			<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom2" %>
+
+		<% end %>
+
+	<% end %>
+
+</div>
+
+
+<script>
+	$('.discuss-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+
+<script>
+	$('.average-discuss-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>

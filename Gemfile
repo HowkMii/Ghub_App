@@ -59,3 +59,4 @@ gem 'jquery-rails'
  #toastr is a Javascript library for notifications
 gem 'toastr-rails'
 gem 'simple_form'
+gem 'paperclip'

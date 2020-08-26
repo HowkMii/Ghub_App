@@ -1,2 +1,20 @@
-<h1>edit idea</h1>
-<%= render 'form' %>
+
+
+<div class="col-md-6 col-md-offset-3">
+
+	<div class="edit-idea-form">
+
+		<h1>Edit Idea</h1>
+    <%= simple_form_for @idea, :html => { :multipart => true } do |f| %>
+      <%= f.select :university_major_id,@university_majors  %>
+      <%= f.file_field :idea_img %>
+    	<%= f.input :title, label: "Idea Title" %>
+    	<%= f.input :content %>
+    	<%= f.input :Owner %>
+    	<%= f.button :submit, :class => 'btn-custom2' %>
+    <% end %>
+
+
+	</div>
+
+</div>

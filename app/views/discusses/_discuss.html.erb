@@ -1,0 +1,22 @@
+<div class="discuss">
+
+	<div class="discuss-rating" data-score="<%= discuss.rating %>"></div>
+	<p class="discuss-comment"><%= discuss.comment %></p>
+
+
+	<% if user_signed_in? %>
+
+		<% if discuss.user_id == current_user.id %>
+
+			<div class="links btn-group">
+
+				<%= link_to "Edit", edit_idea_discuss_path(discuss.idea, discuss), class: "btn btn-custom2" %>
+				<%= link_to "Delete", idea_discuss_path(discuss.idea, discuss), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+
+			</div>
+
+		<% end %>
+
+	<% end %>
+
+</div>

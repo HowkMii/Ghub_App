@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200717125447) do
+ActiveRecord::Schema.define(version: 20200718074707) do
+
+  create_table "discusses", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "idea_id"
+  end
 
   create_table "ideas", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.string "Owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "university_major_id"
+    t.string "idea_img_file_name"
+    t.string "idea_img_content_type"
+    t.bigint "idea_img_file_size"
+    t.datetime "idea_img_updated_at"
+  end
+
+  create_table "university_majors", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,42 @@
+<h1 class="current-:university_major"><%= params[:university_major] %></h1>
 
-<% @ideas.each do |idea| %>
-  <h2> <%= link_to idea.title, idea_path(idea)   %> </h2>
+
+
+<% if @ideas.count == 0 %>
+
+	<h1>There are no ideas currently in this university major </h1>
+
+<% else %>
+
+	<div class="row">
+
+		<% @ideas.each do |idea| %>
+
+			<div class="col-md-4">
+
+
+
+						<a href="/ideas/<%= idea.id %>">
+					    <%= image_tag idea.idea_img.url(:idea_index), class: "idea" %>
+			    	</a>
+
+
+
+			</div>
+
+		<% end %>
+
+	</div>
+
 <% end %>
-<%= link_to "Add Idea", new_idea_path %>
+<li class="dropdown">
+	<%= link_to "Add Idea", new_idea_path ,class: "btn btn-custom2" %>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Domaine  <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+		<% UniversityMajor.all.each do |university_major| %>
+			<li class="<%= 'active' if params[:university_major] == university_major.name %>">
+				<%= link_to university_major.name, ideas_path(university_major: university_major.name), class: "link" %>
+			</li>
+		<% end %>
+	</ul>
+</li>
