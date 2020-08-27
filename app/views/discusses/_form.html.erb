@@ -1,7 +1,9 @@
 <%= simple_form_for([@idea, @idea.discusses.build]) do |f| %>
 	<div id="rating-form">
-		<label>Rating</label>
+		<label>Rate this Idea</label>
+
 	</div>
+	<p>Tell others what you think</p>
 	<%= f.input :comment %>
 	<%= f.button :submit, :class => "btn-custom2" %>
 <% end %>

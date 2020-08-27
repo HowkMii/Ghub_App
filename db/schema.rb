@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200718074707) do
+ActiveRecord::Schema.define(version: 20200820090135) do
 
   create_table "discusses", force: :cascade do |t|
     t.integer "rating"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20200718074707) do
     t.string "idea_img_content_type"
     t.bigint "idea_img_file_size"
     t.datetime "idea_img_updated_at"
+    t.text "key_word"
   end
 
   create_table "university_majors", force: :cascade do |t|
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 20200718074707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.text "Website"
+    t.text "bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

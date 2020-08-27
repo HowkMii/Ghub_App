@@ -1,33 +1,104 @@
-<div class="row justify-content-md-center profile-wrapper">
-  <div class="col-md-4 text-center">
-    
+  <br>
+<br>
+<div class="  ">
+    <%= image_tag("cover.png", class: "cover-user", :alt => "rss feed") %>
 
 
-  </div>
-  <div class="col-md-3 " >
-    <div class="row">
-      <p class= "username"><%= @user.name %></p>
-      <button type="button" class="btn btn-outline-dark common-btn edit-profile-btn" data-toggle="modal" data-target="#exampleModalLong">Setting</button>
-      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Setting</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="list-group text-center">
-              <a href="#" class="list-group-item list-group-item-action"> Change Password</a>
-              <%= link_to "log out", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
-              <a href="#" class="list-group-item list-group-item-action" data-dismiss="model"> Cancel</a>
+</div>
+
+<div class="    ">
+    <%= image_tag("howkmii.jpg", class: "logo-user", :alt => "rss feed") %>
+
+</div>
+<div class="setting1">
+  <% if @user == current_user %>
+    <button type="button" class="btn btn-outline-dark common-btn edit-profile-btn" data-toggle="modal" data-target="#exampleModalLong">Setting</button>
+  <% end %>
+
+</div>
+
+  <div class="row justify-content-md-center profile-wrapper">
+
+
+    <div class="col-md-12   " >
+      <br>
+      <div class="text-center">
+        <p class= "username"><%= @user.name %></p>
+
+
+      </div>
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center " id="exampleModalLongTitle"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Setting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="list-group text-center">
+                <%= link_to "Edit profile" ,edit_user_registration_path, class: "list-group-item list-group-item-action" %>
+
+                <%= link_to "log out", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
+                <a href="#" class="list-group-item list-group-item-action" data-dismiss="model"> Cancel</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+
+        <p class= "email"> This is how you can reach me : <%= @user.email %></p>
+
+
+      </div>
+      <p class= "Website">  https://howkmii.github.io/howkmii_folioo/ </p>
+
+
+
+
+
+  <div class="profile-tab">
+
+    <nav>
+      <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-ideas-tab" data-toggle="tab" href="#nav-ideas" role="tab" aria-controls="nav-idea" aria-selected="true">Ideas</a>
+      </div>
+    </nav>
+    <div class="tab-content pb-3" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-ideas" role="tabpanel" aria-labelledby="nav-ideas-tab">
+        <div class="row">
+
+
+        		<div class="noidea1">
+              <br>
+            <% if @ideas.count == 0 %>
+              <%= @user.name %>
+
+
+
+        		</div>
+            <div class="noidea">
+
+                didn't add any idea
+
+            </div>
+          <% end %>
+
+
+
+
+
+
+        </div>
+
+      </div>
     </div>
-    <div class="row">
-      <p class= "email"><%= @user.email %></p>
-    </div>
+
   </div>
-</div>

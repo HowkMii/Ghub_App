@@ -1,42 +1,51 @@
-<h1 class="current-:university_major"><%= params[:university_major] %></h1>
+<div class="ideae">
+	<% if @ideas.count == 0 %>
+
+		<div class="sorry">
+			<%= image_tag("z.png", :alt => "rss feed") %>
+		</div>
+	<% else %>
+		<div class="row">
+
+			<% @ideas.each do |idea| %>
+			<div class="card" style="width: 18rem;">
+				<div class="imgBx">
+					<a href="/ideas/<%= idea.id %>">
+						<%= image_tag idea.idea_img.url(:idea_index), class: "idea" %>
+
+					</a>
+
+				</div>
+
+			  <div class="card-body">
+			    <h5 class="card-title"> <%= idea.title %></h5>
 
 
 
-<% if @ideas.count == 0 %>
+			    <p class="card-text"><%= idea.university_major.name %> </p>
+					<div class="row">
+						<div class="card-title2 col-6"><%= idea.user.name %>
 
-	<h1>There are no ideas currently in this university major </h1>
+						</div>
 
-<% else %>
+						<div class="card-title3 col-6">
+						<%= time_ago_in_words(idea.created_at).upcase%> A GO
 
-	<div class="row">
+					  </div>
 
-		<% @ideas.each do |idea| %>
-
-			<div class="col-md-4">
-
-
-
-						<a href="/ideas/<%= idea.id %>">
-					    <%= image_tag idea.idea_img.url(:idea_index), class: "idea" %>
-			    	</a>
+					</div>
 
 
 
+			  </div>
 			</div>
 
-		<% end %>
 
-	</div>
 
-<% end %>
-<li class="dropdown">
-	<%= link_to "Add Idea", new_idea_path ,class: "btn btn-custom2" %>
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Domaine  <span class="caret"></span></a>
-	<ul class="dropdown-menu" role="menu">
-		<% UniversityMajor.all.each do |university_major| %>
-			<li class="<%= 'active' if params[:university_major] == university_major.name %>">
-				<%= link_to university_major.name, ideas_path(university_major: university_major.name), class: "link" %>
-			</li>
-		<% end %>
-	</ul>
-</li>
+			<% end %>
+		</div>
+
+	<% end %>
+
+
+</div>

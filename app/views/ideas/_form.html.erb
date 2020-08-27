@@ -1,8 +1,11 @@
 <%= simple_form_for @idea, :html => { :multipart => true } do |f| %>
   <%= select_tag(:university_major_id, options_for_select(@university_majors), :prompt => "Select a university majors") %>
   <%= f.file_field :idea_img %>
+
 	<%= f.input :title, label: "Idea Title" %>
 	<%= f.input :content %>
 	<%= f.input :Owner %>
+  <%= f.input :key_word %>
+
 	<%= f.button :submit, :class => 'btn-custom2' %>
 <% end %>

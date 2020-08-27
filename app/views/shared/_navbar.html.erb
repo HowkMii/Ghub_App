@@ -1,33 +1,50 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-ligh fixed-top ">
+    <div class="container">
 
 
-    <a class="navbar-brand hide-text" href="#"><%= link_to "GHub",root_path, class:"navbar-brand hide-text" %></a>
+      <a class="navbar-brand sss " href="#"><%= link_to "GHub",root_path, class:"navbar-brand sss " %></a>
 
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="form-inline my-2 my-lg-0 ml-md-auto">
-        <input class="form-control mr-sm-2 text-center common-btn " type="search" placeholder="Search" aria-label="Search">
-
-      </form>
-      <ul class="navbar-nav  ml-md-auto">
+      </button>
 
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">explore</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">notificatin</a>
-        </li>
-        <li class="nav-item">
-          <%= link_to "profile", user_path(current_user), class: "nav-link"  %>
+      <div class="dai collapse navbar-collapse" id="navbarSupportedContent">
+        <%= form_tag users_path, method: :get, class: "form-inline my-2 my-lg-0 ml-md-auto", id:"users-search",remote: true  do %>
+          <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2 text-center common-btn", placeholder:"Search", autocomplete:"off" %>
+          <div id="users-result">
+            </div>
+        <% end %>
+        <div class="dropdown dao">
+          <button class="dropbtn">Specialty</button>
+          <div class="dropdown-content">
+              <% UniversityMajor.all.each do |university_major| %>
 
-        </li>
-      </ul>
+                  <%= link_to university_major.name, ideas_path(university_major: university_major.name), class: "link" %>
+
+              <% end %>
+          </div>
+        </div>
+
+
+
+
+
+        <ul class="navbar-nav  ml-md-auto">
+
+
+          <li class="nav-item ">
+              <%= link_to "plus", new_idea_path ,class: " idea-plus hide-text " %>
+          </li>
+
+          <li class="nav-item ">
+            <%= link_to "Profil", user_path(current_user), class: " profile-tti hide-text"  %>
+
+          </li>
+
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>

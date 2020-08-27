@@ -57,7 +57,7 @@ class IdeasController < ApplicationController
   end
   private
     def idea_params
-      params.require(:idea).permit(:title, :content, :Owner, :university_major_id, :idea_img)
+      params.require(:idea).permit(:title, :content, :Owner,:key_word, :university_major_id, :idea_img)
     end
     def find_idea
       @idea =Idea.find(params[:id])

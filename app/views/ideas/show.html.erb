@@ -1,65 +1,81 @@
-<div class="row">
 
-	<div class="col-md-4">
+
+	<div class="col-md-8  col-md-offset-3  landing-center  d-flex align-items-center ">
 
 		<%= image_tag @idea.idea_img.url(:idea_show), class: "idea-show" %>
 
 	</div>
 
-	<div class="col-md-8">
+
+	<div class="col-md-8  col-md-offset-3  landing-center  d-flex align-items-center ">
 
 		<div class="idea-info">
+			<br>
+			<div class="average-discuss-rating" data-score=<%= @average_discuss %>></div>
+			<div class="profile-tag-discuss">
+			<%= link_to @idea.user.name, user_path, class: "user-tag"%></div>
+
+
+			<span class="number-of-discusses">Based on <%= @idea.discusses.count %> Person</span>
 
 			<h2 class="idea-title"><%= @idea.title %></h2>
-
-			<h2 class="avg-rating">Average Rating</h2>
-			<div class="average-discuss-rating" data-score=<%= @average_discuss %>></div>
-			<span class="number-of-discusses">Based on <%= @idea.discusses.count %> discuisses</span>
 			<p class="idea-content"><%= @idea.content %></p>
-			<h3 class="idea-ow"><span>From</span> <%= @idea.Owner %></h3>
+				<p class="key_word"> <%= @idea.key_word %></p>
+			<br>
+
+			<h5 class="idea-ow"> From : <%= @idea.Owner %></h5>
+
+			<div class="">
+
+				<%= time_ago_in_words(@idea.created_at).upcase%> A GO
+
+			</div>
+			<br>
+			<br>
+
+			<%= link_to "Add Discuss", new_idea_discuss_path(@idea), class: "btn btn-custom2" %>
+
+			<% if user_signed_in? %>
+
+				<% if @idea.user_id == current_user.id %>
+
+
+
+					<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-custom2" %>
+					<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom2" %>
+
+				<% end %>
+
+			<% end %>
+			<%= link_to "Back", root_path, class: "btn btn-custom2" %>
 
 		</div>
 	</div>
 
+<br>
 
-</div>
 
-<div class="row">
 
-	<div class="col-md-4">
+
+	<div class="col-md-8  col-md-offset-3  landing-center  d-flex align-items-center">
 
 		<div class="discusses">
 
-			<!-- Where the reviews/ratings will go -->
-			<h1>Discusses</h1>
+
+
 			<%= render @idea.discusses %>
 
-			<div>
-				<%= link_to "Add Discuss", new_idea_discuss_path(@idea), class: "btn-custom2" %>
-			</div>
 
 		</div>
 
 	</div>
 
-</div>
 
-<div class="links btn-group">
 
-	<%= link_to "Back", root_path, class: "btn btn-custom2" %>
+<div>
 
-	<% if user_signed_in? %>
 
-		<% if @idea.user_id == current_user.id %>
 
-			<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-custom2" %>
-			<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom2" %>
-
-		<% end %>
-
-	<% end %>
-
-</div>
 
 
 <script>
